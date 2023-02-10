@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,700;1,400&family=Roboto:ital,wght@0,700;1,400&family=Rubik:wght@400;500;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  border: 1px solid;
+}
+
+.container {
+  /* background-color: whitesmoke; */
+}
+
+.card {
+  -webkit-box-shadow: 0px 0px 36px -16px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 36px -16px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 36px -16px rgba(0, 0, 0, 0.75);
+}

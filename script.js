@@ -1,41 +1,68 @@
 "strict";
 const bookCountainer = document.querySelector(".container");
-const getBookData = function (book) {
-  fetch(
-    `https://www.googleapis.com/books/v1/volumes?q=${book}&AIzaSyDD59y-02tEZuMaYbpLB1F5mqcqLkqlEjE`
+
+const userSearch = document.querySelector(".form-control");
+
+async function getBookData(book) {
+  const responce = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${book}&AIzaSyDD59y-02tEZuMaYbpLB1F5mqcqLkqlEjE`,
+    {
+      orderBy: "newest",
+    }
   )
     .then((responce) => responce.json())
     .then((data) => {
-      console.log(data.items);
-      const html = `<div class="card m-4" style="width: 18rem">
+      const dataBooks = data.items;
+      for (let book of dataBooks) {
+        // ADDING CARD TO HTML
+
+        const html = `<div class="card m-4" style="width: 18rem">
       <img class="card-img-top" src="${
-        data.items[0].volumeInfo.imageLinks.thumbnail
+        book.volumeInfo.imageLinks.thumbnail
       }" alt="Card image cap" />
       <div class="card-body">
-        <h5 class="card-title">Title:${data.items[0].volumeInfo.title}</h5>
-        <p class="card-text">Description:${data.items[0].volumeInfo.description.substr(
+        <h5 class="card-title">Title: ${book.volumeInfo.title}</h5>
+        <p class="card-text">Description: ${book.volumeInfo.description.substr(
           0,
           100
         )}</p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Author:${
-          data.items[0].volumeInfo.authors
-        }</li>
+        <li class="list-group-item">Author: ${book.volumeInfo.authors}</li>
         <li class="list-group-item">Year publish: ${
-          data.items[0].volumeInfo.publishedDate
+          book.volumeInfo.publishedDate
         }</li>
         <li class="list-group-item">Rating</li>
       </ul>
     </div>`;
-      console.log(data);
-      bookCountainer.insertAdjacentHTML("beforeend", html);
+
+        bookCountainer.insertAdjacentHTML("beforeend", html);
+        console.log(data);
+      }
     });
+}
+
+userSearch.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    getBookData(e.target.value);
+  }
+});
+
+let timoutId;
+const onInput = (e) => {
+  if (timoutId) {
+    clearTimeout(timoutId);
+  }
+  timoutId = setTimeout(() => {
+    getBookData(e.target.value);
+  }, 1000);
 };
 
-getBookData("the hobbit");
-getBookData("the hobbit");
+userSearch.addEventListener("input", onInput);
 
-getBookData("harry potter");
-
-// console.log(getBookData("harry potter"));
+// const input = async (event) => {
+//   const books = await getBookData(event.target.value);
+//   for (let book of books) {
+//     console.log(book);
+//   }
+// };
