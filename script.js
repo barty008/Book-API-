@@ -16,10 +16,7 @@ async function getBookData(book) {
       for (let book of dataBooks) {
         // ADDING CARD TO HTML
 
-        const html = `<div class="container ">
-        <div class="row d-flex  ">
-          <div class="col ">
-            <div class="card m-4 " style="width: 18rem">
+        const html = `<div class="card m-4 " style="width: 18rem">
               <img class="card-img-top" src="${
                 book.volumeInfo.imageLinks.thumbnail
               }" alt="Card image cap" />
@@ -39,13 +36,10 @@ async function getBookData(book) {
                 }</li>
                 <li class="list-group-item">Rating</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>`;
+            </div>`;
 
-        bookCountainer.insertAdjacentHTML("beforeend", html);
         console.log(data);
+        bookCountainer.insertAdjacentHTML("beforeend", html);
       }
     });
 }
