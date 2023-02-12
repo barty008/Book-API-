@@ -17,23 +17,13 @@ async function getBookData(book) {
         // ADDING CARD TO HTML
 
         const html = `<div class="card m-4 " style="width: 18rem">
-              <img class="card-img-top" src="${
-                book.volumeInfo.imageLinks.thumbnail
-              }" alt="Card image cap" />
+              <img class="card-img-top" src="${book.volumeInfo.imageLinks.thumbnail}" alt="Card image cap" />
               <div class="card-body">
                 <h5 class="card-title">Title: ${book.volumeInfo.title}</h5>
-                <p class="card-text">Description: ${book.volumeInfo.description.substr(
-                  0,
-                  100
-                )}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Author: ${
-                  book.volumeInfo.authors
-                }</li>
-                <li class="list-group-item">Year publish: ${
-                  book.volumeInfo.publishedDate
-                }</li>
+                <li class="list-group-item">Author: ${book.volumeInfo.authors}</li>
+                <li class="list-group-item">Year publish: ${book.volumeInfo.publishedDate}</li>
                 <li class="list-group-item">Rating</li>
               </ul>
             </div>`;
