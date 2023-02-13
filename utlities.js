@@ -1,4 +1,5 @@
 "strict";
+
 const stars = document.querySelectorAll(".fa-star");
 
 const allStars = stars.forEach((star, index) => {
@@ -9,6 +10,13 @@ const allStars = stars.forEach((star, index) => {
       } else if (otherIdx >= otherIdx) {
         otherStar.classList.remove("star-hover");
       }
+    });
+  });
+});
+stars.forEach((star) => {
+  star.addEventListener("dblclick", () => {
+    stars.forEach((otherStar) => {
+      otherStar.classList.remove("star-hover");
     });
   });
 });

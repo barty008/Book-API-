@@ -1,5 +1,6 @@
 "strict";
-const bookCountainer = document.querySelector(".container");
+
+const resultContainer = document.querySelector(".result");
 
 const userSearch = document.querySelector(".form-control");
 
@@ -16,20 +17,25 @@ async function getBookData(book) {
       for (let book of dataBooks) {
         // ADDING CARD TO HTML
 
-        const html = `<div class="card m-4 " style="width: 18rem">
-              <img class="card-img-top" src="${book.volumeInfo.imageLinks.thumbnail}" alt="Card image cap" />
-              <div class="card-body">
-                <h5 class="card-title">Title: ${book.volumeInfo.title}</h5>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Author: ${book.volumeInfo.authors}</li>
-                <li class="list-group-item">Year publish: ${book.volumeInfo.publishedDate}</li>
-                <li class="list-group-item">Rating</li>
+        const html = `            <div class="card m-4 " style="width: 14rem">
+        <img class="card-img-top w-75 d-flex m-auto p-2" src="${book.volumeInfo.imageLinks.thumbnail}" alt="Card image cap" />
+        <div class="card-body ">
+          <h5 class="card-title"><strong>Title:</strong><br>${book.volumeInfo.title}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Author:</strong><br>${book.volumeInfo.authors}</li>
+          <li class="list-group-item"><strong>Year published:</strong><br>${book.volumeInfo.publishedDate}</li>
+          <li class="list-group-item"><strong>Rating:</strong><br>
+              <!--STARS  -->
+              <ul class="stars p-2 d-flex justify-content-between">
+            <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></li>
               </ul>
-            </div>`;
+        </ul>
+        <textarea name="text" id="textarea" cols="30" rows="8"></textarea>
+      </div>`;
 
         console.log(data);
-        bookCountainer.insertAdjacentHTML("beforeend", html);
+        resultContainer.insertAdjacentHTML("beforeend", html);
       }
     });
 }
@@ -51,10 +57,3 @@ const onInput = (e) => {
 };
 
 userSearch.addEventListener("input", onInput);
-
-// const input = async (event) => {
-//   const books = await getBookData(event.target.value);
-//   for (let book of books) {
-//     console.log(book);
-//   }
-// };

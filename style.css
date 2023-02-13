@@ -32,3 +32,11 @@ li {
   color: gold;
   font-weight: 800;
 }
+
+.btn-secondary {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.card-img-top {
+  height: 200px;
+}
