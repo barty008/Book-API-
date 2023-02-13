@@ -1,8 +1,8 @@
 "strict";
 
 const resultContainer = document.querySelector(".result");
-
 const userSearch = document.querySelector(".form-control");
+const listItems = [];
 
 async function getBookData(book) {
   const responce = await fetch(
@@ -14,10 +14,13 @@ async function getBookData(book) {
     .then((responce) => responce.json())
     .then((data) => {
       const dataBooks = data.items;
-      for (let book of dataBooks) {
-        // ADDING CARD TO HTML
 
-        const html = `            <div class="card m-4 " style="width: 14rem">
+      resultContainer.innerHTML = "";
+      dataBooks.forEach((book) => {
+        const li = document.createElement("li");
+        listItems.push(li);
+
+        li.innerHTML = `<div class="card m-4 " style="width: 14rem">
         <img class="card-img-top w-75 d-flex m-auto p-2" src="${book.volumeInfo.imageLinks.thumbnail}" alt="Card image cap" />
         <div class="card-body ">
           <h5 class="card-title"><strong>Title:</strong><br>${book.volumeInfo.title}</h5>
@@ -33,10 +36,8 @@ async function getBookData(book) {
         </ul>
         <textarea name="text" id="textarea" cols="30" rows="8"></textarea>
       </div>`;
-
-        console.log(data);
-        resultContainer.insertAdjacentHTML("beforeend", html);
-      }
+        resultContainer.appendChild(li);
+      });
     });
 }
 
