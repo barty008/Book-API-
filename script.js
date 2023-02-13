@@ -35,6 +35,7 @@ async function getBookData(book) {
               </ul>
         </ul>
         <textarea name="text" id="textarea" cols="30" rows="8"></textarea>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">Submit to Library</button>
       </div>`;
         resultContainer.appendChild(li);
       });
