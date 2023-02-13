@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://kit.fontawesome.com/0b7d8cf1ac.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,11 +12,9 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-    />
+
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://kit.fontawesome.com/0b7d8cf1ac.css" crossorigin="anonymous">
     <title>My Project</title>
   </head>
   <body>
@@ -31,14 +30,29 @@
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
       />
-    </div>
-    <div class="container d-flex justify-content-center flex-wrap">
-      <div class="row">
-        <div class="col-lg">
-          <!-- input -->
-        </div>
-      </div>
-    </div>
+    </div>  
+      
+        
+          <div class="result d-flex justify-content-center flex-wrap"></div>
+          <section>
+            <div class="card m-4 " style="width: 14rem">
+              <img class="card-img-top w-75 d-flex m-auto p-2" src="./img/2369537085927.jpg" alt="Card image cap" />
+              <div class="card-body ">
+                <h5 class="card-title"><strong>Title:</strong><br>${book.volumeInfo.title}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Author:</strong><br>${book.volumeInfo.authors}</li>
+                <li class="list-group-item"><strong>Year published:</strong><br>${book.volumeInfo.publishedDate}</li>
+                <li class="list-group-item"><strong>Rating:</strong><br>
+                    <!--STARS  -->
+                    <ul class="stars p-2 d-flex justify-content-between">
+                  <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></li>
+                    </ul>
+              </ul>
+              <textarea name="text" id="textarea" cols="30" rows="8"></textarea>
+            </div>
+          </section>
+
 
 
     <script
@@ -47,6 +61,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./script.js"></script>
+    <script src="./utlities.js"></script>
   </body>
 </html>
 
