@@ -55,7 +55,7 @@ const onInput = (e) => {
   }
   timoutId = setTimeout(() => {
     getBookData(e.target.value);
-  }, 1000);
+  }, 500);
 };
 
 userSearch.addEventListener("input", onInput);
