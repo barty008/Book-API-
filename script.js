@@ -17,8 +17,18 @@ async function getBookData(book) {
 
       resultContainer.innerHTML = "";
       dataBooks.forEach((book) => {
-        const li = document.createElement("li");
+        let li = document.createElement("li");
         listItems.push(li);
+        //
+        // //
+        // const newStarArray = listItems.map((el) => {
+        //   return (el.innerHTML = `<i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></li>`);
+        // });
+        // const stars = document.querySelectorAll(".fa-star");
+
+        // listItems.map((li) => {
+
+        // });
 
         li.innerHTML = `<div class="card m-4 " style="width: 14rem">
         <img class="card-img-top w-75 d-flex m-auto p-2" src="${book.volumeInfo.imageLinks.thumbnail}" alt="Card image cap" />
@@ -30,14 +40,19 @@ async function getBookData(book) {
           <li class="list-group-item"><strong>Year published:</strong><br>${book.volumeInfo.publishedDate}</li>
           <li class="list-group-item"><strong>Rating:</strong><br>
               <!--STARS  -->
+
               <ul class="stars p-2 d-flex justify-content-between">
-            <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></li>
-              </ul>
+              ${newStarArray}
+              
+              </ul>           
+        
         </ul>
         <textarea name="text" id="textarea" cols="30" rows="8"></textarea>
         <button type="button" class="btn btn-secondary btn-lg btn-block">Submit to Library</button>
       </div>`;
         resultContainer.appendChild(li);
+        starFunction();
+        //
       });
     });
 }
